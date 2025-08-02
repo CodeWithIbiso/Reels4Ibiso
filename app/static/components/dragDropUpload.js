@@ -11,7 +11,7 @@ const DragDropUpload = {
                 :class="dropAreaClass"
             >
                 <div class="flex justify-center items-center h-full cursor-pointer">Drag and drop your files here or click to select</div>
-                <input type="file" multiple @change="handleFiles" ref="fileInput" class="hidden" />
+                <input type="file" multiple @change="handleFiles" ref="fileInput" class="hidden" accept="image/*,video/*" />
             </div>
             <ul>
                 <li v-for="file in files" :key="file.name">{{ file.name }} ({{ file.size }} bytes)</li>
@@ -51,13 +51,32 @@ const DragDropUpload = {
         handleFiles(event) {
             this.files = Array.from(event.target.files);
         },
-        uploadFiles() {
-            // Implement actual upload logic here
-            alert('Uploading files...');
+        async uploadFiles() {
+            const formData = new FormData();
+            this.files.forEach(file => {
+                formData.append('files', file);
+            });
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    alert('Upload failed.');
+                    return;
+                }
+
+                alert('Files uploaded successfully!');
+                this.clearFiles();
+            } catch (error) {
+                console.error('Error uploading files: ', error);
+                alert('An error occurred while uploading files.');
+            }
         },
         clearFiles() {
             this.files = [];
         }
     }
 };
-

@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from routes import users, patients, practices, static_routes
+from routes.upload import router as upload_router  # Import the upload router
 from middleware.rate_limit import RateLimitMiddleware
 
 import os
@@ -57,6 +58,7 @@ app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(patients.router, prefix="/patients", tags=["Patients"])
 app.include_router(practices.router, prefix="/practices", tags=["Practices"])
 app.include_router(static_routes.router, tags=["Static"])
+app.include_router(upload_router, prefix="/api", tags=["Upload"])  # Include the upload router
 
 # Endpoints
 @app.get("/")
@@ -70,5 +72,3 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
-
- 
