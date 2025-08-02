@@ -25,6 +25,7 @@ mdurl==0.1.2
 motor==3.7.1
 packaging==25.0
 passlib==1.7.4
+pillow==11.3.0
 pluggy==1.6.0
 pyasn1==0.6.1
 pydantic==2.11.7
@@ -56,4 +57,3 @@ uvicorn==0.35.0
 uvloop==0.21.0
 watchfiles==1.1.0
 websockets==15.0.1
-# gunicorn your_application.wsgi
