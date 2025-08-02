@@ -1,4 +1,46 @@
 <html>
+<head>
+  <style>
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Light mode styles */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: white;
+        color: black;
+      }
+      .bg-blue-500 {
+        background-color: #3b82f6; /* Tailwind's blue-500 */
+      }
+      .text-blue-500 {
+        color: #3b82f6;
+      }
+    }
+
+    /* Dark mode styles */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1a202c; /* Tailwind's gray-900 */
+        color: white;
+      }
+      .bg-blue-500 {
+        background-color: #2563eb; /* Darker blue for contrast */
+      }
+      .text-blue-500 {
+        color: #2563eb;
+      }
+    }
+
+    /* Use flexbox with gap for spacing between buttons */
+    nav {
+      display: flex;
+      gap: 8px; /* Adjust the value as needed */
+    }
+  </style>
+</head>
+<body>
 <div id="app" class="p-4">
   <header class="mb-4">
     <h1 class="text-3xl font-bold">🎬 Reel Manager</h1>
@@ -62,4 +104,5 @@
 
   app.mount("#app");
 </script>
+</body>
 </html>

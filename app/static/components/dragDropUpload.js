@@ -7,10 +7,11 @@ const DragDropUpload = {
                 @dragover.prevent="handleDragOver"
                 @dragleave="handleDragLeave"
                 @drop.prevent="handleDrop"
-                class="border-2 border-dashed border-gray-300 rounded-xl w-50 h-[250px]"
-                :class="dropAreaClass"
+                :class="['border-2', 'border-dashed', 'rounded-xl', 'w-50', 'h-[250px]', dropAreaClass, themeClass]"
             >
-                <div class="flex justify-center items-center h-full cursor-pointer">Drag and drop your files here or click to select</div>
+                <div :class="['flex', 'justify-center', 'items-center', 'h-full', 'cursor-pointer', textClassReverse]">
+                    Drag and drop your files here or click to select
+                </div>
                 <input type="file" multiple @change="handleFiles" ref="fileInput" class="hidden" accept="image/*,video/*" />
             </div>
             <ul>
@@ -32,6 +33,15 @@ const DragDropUpload = {
     computed: {
         dropAreaClass() {
             return this.isDragging ? 'bg-blue-100' : 'bg-white';
+        },
+        themeClass() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white';
+        },
+        textClass() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'text-white' : 'text-black';
+        },
+        textClassReverse() {
+            return !window.matchMedia('(prefers-color-scheme: dark)').matches ? 'text-white' : 'text-black';
         }
     },
     methods: {

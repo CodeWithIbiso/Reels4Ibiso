@@ -106,6 +106,7 @@ env.bak/
 venv.bak/
 venv-backoffice/
 .env
+uploads/
 
 # Spyder project settings
 .spyderproject
