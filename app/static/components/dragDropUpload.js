@@ -78,7 +78,9 @@ const DragDropUpload = {
                     return;
                 }
 
-                alert('Files uploaded successfully!');
+                const data = await response.json()
+
+                alert(data.detail);
                 this.clearFiles();
             } catch (error) {
                 console.error('Error uploading files: ', error);
