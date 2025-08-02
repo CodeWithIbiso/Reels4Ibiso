@@ -1,3 +1,4 @@
+<html>
 <div id="app" class="p-4">
   <header class="mb-4">
     <h1 class="text-3xl font-bold">🎬 Reel Manager</h1>
@@ -13,6 +14,9 @@
       Upload
     </button>
     <button @click="activeTab = 'edit'" :class="tabClass('edit')">Edit</button>
+    <button @click="activeTab = 'dragDropUpload'" :class="tabClass('dragDropUpload')">
+      Drag & Drop Upload
+    </button>
   </nav>
   <main>
     <section v-if="activeTab === 'uploaded'">
@@ -26,6 +30,9 @@
     </section>
     <section v-if="activeTab === 'edit'">
       <edit-reels></edit-reels>
+    </section>
+    <section v-if="activeTab === 'dragDropUpload'">
+      <drag-drop-upload></drag-drop-upload>
     </section>
   </main>
 </div>
@@ -51,6 +58,8 @@
   app.component("upload-reel", UploadReel);
   app.component("not-uploaded-reels", NotUploadedReels);
   app.component("edit-reels", EditReels);
+  app.component("drag-drop-upload", DragDropUpload);
 
   app.mount("#app");
 </script>
+</html>

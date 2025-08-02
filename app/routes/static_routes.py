@@ -4,6 +4,7 @@ from typing import List
 from pydantic import BaseModel
 import os
 from fastapi.security import OAuth2PasswordBearer
+
 router = APIRouter()
 
 class Reel(BaseModel):
@@ -31,13 +32,13 @@ async def get_dashboard():
     <script src="static/components/uploadReel.js?v=1.0.3"></script>
     <script src="static/components/notUploadedReels.js?v=1.0.1"></script>
     <script src="static/components/editReels.js?v=1.0.1"></script>
+    <script src="static/components/dragDropUpload.js?v=1.0.0"></script>
     """
     
     if os.getenv("ENV") != "production":
         extra_scripts += '<script src="http://localhost:5500/livereload.js"></script>'
     
     return load_template(content, title="Dashboard - Reel Manager", extra_scripts=extra_scripts)
-
 
 # security starts
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
