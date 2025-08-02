@@ -1,0 +1,56 @@
+<div id="app" class="p-4">
+  <header class="mb-4">
+    <h1 class="text-3xl font-bold">🎬 Reel Manager</h1>
+  </header>
+  <nav class="mb-4">
+    <button @click="activeTab = 'uploaded'" :class="tabClass('uploaded')">
+      Uploaded
+    </button>
+    <button @click="activeTab = 'notUploaded'" :class="tabClass('notUploaded')">
+      Not Uploaded
+    </button>
+    <button @click="activeTab = 'upload'" :class="tabClass('upload')">
+      Upload
+    </button>
+    <button @click="activeTab = 'edit'" :class="tabClass('edit')">Edit</button>
+  </nav>
+  <main>
+    <section v-if="activeTab === 'uploaded'">
+      <uploaded-reels></uploaded-reels>
+    </section>
+    <section v-if="activeTab === 'notUploaded'">
+      <not-uploaded-reels></not-uploaded-reels>
+    </section>
+    <section v-if="activeTab === 'upload'">
+      <upload-reel></upload-reel>
+    </section>
+    <section v-if="activeTab === 'edit'">
+      <edit-reels></edit-reels>
+    </section>
+  </main>
+</div>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        activeTab: "uploaded",
+      };
+    },
+    mounted(){},
+    methods: {
+      tabClass(tab) {
+        return this.activeTab === tab
+          ? "bg-blue-500 text-white px-4 py-2 rounded"
+          : "bg-white text-blue-500 px-4 py-2 rounded";
+      },
+    },
+  });
+
+  app.component("uploaded-reels", UploadedReels);
+  app.component("upload-reel", UploadReel);
+  app.component("not-uploaded-reels", NotUploadedReels);
+  app.component("edit-reels", EditReels);
+
+  app.mount("#app");
+</script>

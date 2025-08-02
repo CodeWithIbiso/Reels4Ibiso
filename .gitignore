@@ -1,0 +1,139 @@
+node_modules/
+# env/ 
+insight_env/
+devenv/
+bovenv/
+
+.idea
+
+questionnaire/__pycache__/models.cpython-310.pyc
+questionnaire/__pycache__/urls.cpython-310.pyc
+questionnaire/__pycache__/views.cpython-310.pyc
+symox/__pycache__/settings.cpython-310.pyc
+symox/__pycache__/views.cpython-310.pyc
+__pycache__/utils.cpython-310.pyc
+
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+# .python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+myenv/
+env.bak/
+venv.bak/
+venv-backoffice/
+.env
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+
+utils.py
+symox/settings.py
+Dockerfile
+buildspec.yaml
+*.yaml
+
+file_pipeline/ATB_FACILITY_DB.xlsx
+file_pipeline/ATB_SHEET.xlsx
+file_pipeline/ATB_SHEET_2.xlsx
+file_pipeline/ATB_SHEETOld.xlsx
+file_pipelineATB_SHEET.xlsx
+json_file.json
+file_pipeline/i_care_dummy.demo_import.json
+pivot_table_output.xlsx
+*.24D0dbEd
+public/files/s3files/ATB_SHEET.xlsx.24D0dbEd
+file_pipeline/pi_tracker_1.xlsx
+file_pipeline/pi_tracker_old.xlsx
+file_pipeline/pi_tracker_old2.xlsx
+file_pipeline/pi_tracker_old3.xlsx
+file_pipeline/pi_tracker_old4.xlsx
+file_pipeline/~$pi_tracker_1.xlsx

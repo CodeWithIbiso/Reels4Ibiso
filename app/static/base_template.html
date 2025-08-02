@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Vue.js -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- Include any additional dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Add any additional styles here */
+    </style>
+    {{ extra_scripts }}
+</head>
+<body>
+    <div id="content">
+        {{ content }}
+    </div>
+    <!-- Include any Bootstrap JS if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
