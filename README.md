@@ -26,5 +26,8 @@ pip install livereload
 
 pip install requests
 
+pip install Pillow
+
+brew install ffmpeg
 
 

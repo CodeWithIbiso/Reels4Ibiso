@@ -1,0 +1,94 @@
+const DragDropUpload = {
+    template: `
+        <section class="p-4">
+            <h2 class="text-xl font-semibold mb-4">Drag & Drop Upload</h2>
+            <div
+                @click="triggerFileSelect"
+                @dragover.prevent="handleDragOver"
+                @dragleave="handleDragLeave"
+                @drop.prevent="handleDrop"
+                :class="['border-2', 'border-dashed', 'rounded-xl', 'w-50', 'h-[250px]', dropAreaClass, themeClass]"
+            >
+                <div :class="['flex', 'justify-center', 'items-center', 'h-full', 'cursor-pointer', textClassReverse]">
+                    Drag and drop your files here or click to select
+                </div>
+                <input type="file" multiple @change="handleFiles" ref="fileInput" class="hidden" accept="image/*,video/*" />
+            </div>
+            <ul>
+                <li v-for="file in files" :key="file.name">{{ file.name }} ({{ file.size }} bytes)</li>
+            </ul>
+            <div v-if="files.length > 0" class="mt-4">
+                <button @click="uploadFiles" class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Upload</button>
+                <button @click="clearFiles" class="bg-red-500 text-white px-4 py-2 rounded">Clear</button>
+            </div>
+        </section>
+    `,
+    name: 'DragDropUpload',
+    data() {
+        return {
+            files: [],
+            isDragging: false,
+        };
+    },
+    computed: {
+        dropAreaClass() {
+            return this.isDragging ? 'bg-blue-100' : 'bg-white';
+        },
+        themeClass() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white';
+        },
+        textClass() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'text-white' : 'text-black';
+        },
+        textClassReverse() {
+            return !window.matchMedia('(prefers-color-scheme: dark)').matches ? 'text-white' : 'text-black';
+        }
+    },
+    methods: {
+        triggerFileSelect() {
+            this.$refs.fileInput.click();
+        },
+        handleDrop(event) {
+            this.isDragging = false;
+            this.files = Array.from(event.dataTransfer.files);
+        },
+        handleDragOver(event) {
+            this.isDragging = true;
+        },
+        handleDragLeave(event) {
+            this.isDragging = false;
+        },
+        handleFiles(event) {
+            this.files = Array.from(event.target.files);
+        },
+        async uploadFiles() {
+            const formData = new FormData();
+            this.files.forEach(file => {
+                formData.append('files', file);
+            });
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    alert('Upload failed.');
+                    return;
+                }
+
+                const data = await response.json()
+
+                alert(data.detail);
+                this.clearFiles();
+            } catch (error) {
+                console.error('Error uploading files: ', error);
+                alert('An error occurred while uploading files.');
+            }
+        },
+        clearFiles() {
+            this.files = [];
+        }
+    }
+};
